@@ -1,18 +1,16 @@
 # GraphOwnDataset
-# Dataset iz grafa
 
 Koristi se python modul `ogb`, link na [repozitorij](https://github.com/snap-stanford/ogb).
 
-OGB vec ima pripremljene datasetove na kojima se mogu testirati vlastiti modeli. 
+OGB vec ima pripremljene datasetove na kojima se mogu testirati vlastiti modeli.
 
-Cilj je stvoriti iz vlastitih podataka dataset za testirati modele. 
-
+Cilj je stvoriti iz vlastitih podataka dataset za testirati modele.
 
 ## Kako strukturirati dataset
 
-Potrebno je kreirati korijenski direktorij unutar kojeg će se nalaziti direktoriji sa podacima. 
+Potrebno je kreirati korijenski direktorij unutar kojeg će se nalaziti direktoriji sa podacima.
 
-```
+```cmd
 root
 ├─── dataset_1
 ├─── dataset_2
@@ -24,7 +22,6 @@ root
 ### Meta podaci u 'master.csv'
 
 Za svaki dataset direktorij potrebno je kreirati stupac unutar `master.csv` filea. On sadrži metapodatke dataseta. Ako je više direktorija svaki stupac odgovara podacima iz dataseta koji ima naziv kao index stupca.
-
 
 Primjer stupca iz `master.csv` preuzetoga od OGB dataseta za `ogbn_arxiv` dataset.
 
@@ -46,12 +43,11 @@ Primjer stupca iz `master.csv` preuzetoga od OGB dataseta za `ogbn_arxiv` datase
 'version': 1,
 ```
 
-
 ## Primjer strukture direktorija 'ogbn_arxiv'
 
-
 Ispis sa `tree` naredbom:
-```
+
+```cmd
 dataset
 └───ogbn_arxiv
     │   RELEASE_v1.txt
@@ -77,7 +73,6 @@ dataset
                 valid.csv.gz
 ```
 
-
 ```python
 from ogb.nodeproppred import PygNodePropPredDataset
 
@@ -86,8 +81,7 @@ DATASET_NAME = "ogbn-arxiv"
 dataset = PygNodePropPredDataset(name = DATASET_NAME)
 ```
 
-
-```
+```cmd
 dataset
 └── ogbn_arxiv
     ├── mapping
@@ -113,13 +107,14 @@ dataset
             └── valid.csv.gz
 ```
 
+Podaci nakon što se čitaju iz .csv fileova u raw direktoriju su tipa array, npr:
 
-Podaci nakon što se čitaju iz .csv fileova u raw direktoriju su tipa array, npr: 
 ```python
 node_label = pd.read_csv('node-label.csv.gz',
                           compression='gzip',
                           header = None).values
 ```
+
 ```python
 >>> type(node_label)
 numpy.ndarray
@@ -140,32 +135,43 @@ array([[ 4],
 
 `num-edge-list` broj veza u grafu, odgovara broju linija u `edge.csv`
 
+## Mapping
 
-### Mapping
+### Primjer sadržaja direktorija `mapping` za dataset `ogbn-arrxiv`
 
+#### Sadržaj filea `labelidx2arxivcategeory.csv`
 
-`labelidx2arxivcategeory.csv`
-```
+```csv
 label idx,arxiv category
 0,arxiv cs na
 1,arxiv cs mm
-2,arxiv cs lo
 ...
 39,arxiv cs dm
 ```
 
-`nodeidx2paperid.csv`
+#### Sadržaj filea `nodeidx2paperid.csv`
 
-```
+```csv
 node idx,paper id
 0,9657784
 1,39886162
-2,116214155
 ...
 169342,3012505757
 ```
 
+## Split
+
+U ovom direktoriju nalaze se indexi po kojima se skup podataka iz dataseta razdvaja na test, train i valid podskupove.
+
+### Primjer `ogbn-arxiv`
+
+total 169342
+
+| Subset    | # of rows | Percent |
+| --------- | --------- | ------- |
+| Train     | 90941     | 53.7    |
+| Test      | 48603     | 28.6    |
+| Valid     | 29799     | 17.5    |
+| **Total** | 169342    | 100     |
 
 ## Priprema podataka
-
-### 
