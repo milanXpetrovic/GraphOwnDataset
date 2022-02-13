@@ -5,7 +5,7 @@ Koristi se python modul `ogb`, link na [repozitorij](https://github.com/snap-sta
 
 OGB vec ima pripremljene datasetove na kojima se mogu testirati vlastiti modeli. 
 
-A naš cilj je stvoriti i iz vlastitih podataka dataset za testirati modele. 
+Cilj je stvoriti iz vlastitih podataka dataset za testirati modele. 
 
 
 ## Kako strukturirati dataset
