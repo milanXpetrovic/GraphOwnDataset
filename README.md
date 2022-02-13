@@ -47,7 +47,7 @@ Primjer stupca iz `master.csv` preuzetoga od OGB dataseta za `ogbn_arxiv` datase
 
 Ispis sa `tree` naredbom:
 
-```cmd
+```
 dataset
 └───ogbn_arxiv
     │   RELEASE_v1.txt
@@ -81,7 +81,7 @@ DATASET_NAME = "ogbn-arxiv"
 dataset = PygNodePropPredDataset(name = DATASET_NAME)
 ```
 
-```cmd
+```
 dataset
 └── ogbn_arxiv
     ├── mapping
