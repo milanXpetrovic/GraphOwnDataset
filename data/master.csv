@@ -1,0 +1,16 @@
+,my-own-dataset
+num tasks,1
+num classes,2
+eval metric,acc
+task type,binary classification
+download_name,None
+version,1
+url,None
+add_inverse_edge,False
+has_node_attr,False
+has_edge_attr,False
+split,split
+additional node files,None
+additional edge files,None
+is hetero,False
+binary,False
