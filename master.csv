@@ -1,0 +1,16 @@
+,twt,ogbn-arxiv
+num tasks,1,1
+num classes,2,40
+eval metric,acc,acc
+task type,binary classification,multiclass classification
+download_name,None,arxiv
+version,1,1
+url,None,None
+add_inverse_edge,False,False
+has_node_attr,False,True
+has_edge_attr,False,False
+split,test_split,time
+additional node files,None,node_year
+additional edge files,None,None
+is hetero,False,False
+binary,False,False
